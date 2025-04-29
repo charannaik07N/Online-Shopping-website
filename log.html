@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    
+    <!-- Include Boxicons for the icons used -->
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+    
+    <style>
+        /* Defining CSS variables */
+        :root {
+            --white: #fff;
+            --black: #333;
+        }
+
+        /* Wrapper styling */
+        .wrapper {
+            position: relative;
+            width: 750px;
+            height: 450px;
+            background: var(--white);
+            border: 2px solid var(--black);
+            border-radius: 10px;
+            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 50px auto; /* Centering the form on the page */
+        }
+
+        .wrapper .form-box {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .wrapper .form-box.Login {
+            left: 0;
+            padding: 0 60px 0 40px;
+        }
+
+        .wrapper .form-box.register .animation {
+            transform: translateX(120%);
+            opacity: 0;
+            filter: blur(10px);
+            transition: 0.7s ease;
+            transition-delay: calc(0.1s * var(--i));
+        }
+
+        .wrapper.active .form-box.register .animation {
+            transform: translateX(0);
+            opacity: 1;
+            filter: blur(0);
+            transition-delay: calc(0.1s * var(--i));
+        }
+
+        .wrapper .info-text.register {
+            left: 0;
+            text-align: left;
+            padding: 0 150px 60px 40px;
+            pointer-events: none;
+        }
+
+        .wrapper.active .info-text.register {
+            pointer-events: auto;
+        }
+
+        .wrapper .info-text.register .animation {
+            transform: translateX(-120%);
+            opacity: 0;
+            filter: blur(10px);
+            transition: 0.7s ease;
+            transition-delay: calc(0.1s * var(--i));
+        }
+
+        .wrapper.active .info-text.register .animation {
+            transform: translateX(0);
+            opacity: 1;
+            filter: blur(0);
+            transition-delay: calc(0.1s * var(--i));
+        }
+
+        /* Styling for the form elements */
+        .input-box {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid var(--black);
+            outline: none;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus + label,
+        .input-box input:valid + label {
+            top: -20px;
+            font-size: 12px;
+            color: var(--black);
+        }
+
+        /* Adding icons */
+        .input-box i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: var(--black);
+        }
+
+        /* Button styling */
+        .btn {
+            padding: 10px 20px;
+            background-color: var(--black);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Styling for the text under the button */
+        .limitTxt {
+            margin-top: 20px;
+        }
+
+        .limitTxt a {
+            color: var(--black);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="">
+            <div class="input-box animation" style="--i:1; --j:2;">
+                <input type="text" required>
+                <label>Username</label>
+                <i class='bx bxs-user'></i>
+            </div>
+          
+            <div class="input-box animation" style="--i:3; --j:4;">
+                <input type="password" required>
+                <label>Password</label>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+          
+            <button type="submit" class="btn animation" style="--i:5; --j:6;">Login</button>
+            <p class="limitTxt animation" style="--i:7; --j:8;">Don't have an account? <a href="#" class="register-link">Sign Up</a></p>
+        </form>
+    </div>
+</body>
+</html>

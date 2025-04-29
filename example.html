@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .offer img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .offer p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .offer h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .offer small {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .offer .btn {
+            display: inline-block;
+            background-color: #ff523b;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slider">
+    <div class="slides">
+        <div class="slide">
+            <div class="offer">
+                <div class="small-container">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="https://m.media-amazon.com/images/I/81Qx8nb5IrL._AC_UF350,350_QL80_.jpg" alt="RealMe 12 Pro+">
+                        </div>
+                        <div class="col-2">
+                            <p>Exclusively Available On Cart with Charan</p>
+                            <h1>RealMe 12 Pro+</h1>
+                            <small>Realme 12 Pro+ is excellent for portrait photography with its advanced camera. The latest processor ensures smooth gaming performance.</small>
+                            <a href="#" class="btn">Buy Now &#8594;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="offer">
+                <div class="small-container">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="images/boat.jpg" alt="Boat Audio">
+                        </div>
+                        <div class="col-2">
+                            <p>Exclusively Available On Cart with Charan</p>
+                            <h1>Boat Audio</h1>
+                            <small>Great deal on Boat audio and headsets</small>
+                            <a href="#" class="btn">Buy Now &#8594;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="offer">
+                <div class="small-container">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="images/vivo.jpg" alt="Boat Audio">
+                        </div>
+                        <div class="col-2">
+                            <p>Exclusively Available On Cart with Charan</p>
+                            <h1>Vivo T3 pro 5G</h1>
+                            <small>The Vivo T3 5G is a mid-range smartphone offering powerful performance with its Snapdragon processor and a vibrant 6.77-inch Full HD+ AMOLED display. It features a versatile camera setup, including a 50MP primary lens, making it ideal for photography enthusiast</small>
+                            <a href="#" class="btn">Buy Now &#8594;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+
+    function moveSlide(direction) {
+        const slides = document.querySelector('.slides');
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        currentSlide += direction;
+
+        if (currentSlide >= totalSlides) {
+            currentSlide = 0;
+        } else if (currentSlide < 0) {
+            currentSlide = totalSlides - 1;
+        }
+
+        const offset = -currentSlide * 100;
+        slides.style.transform = `translateX(${offset}%)`;
+    }
+</script>
+
+</body>
+</html>
